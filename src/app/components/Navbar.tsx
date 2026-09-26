@@ -3,6 +3,7 @@ import { usePlan } from "../context/PlanContext";
 import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,9 +14,10 @@ export default function Navbar() {
     <nav className="border-b border-white/10 bg-black">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
 
-        <div className="font-[var(--font-oswald)] text-xl font-bold tracking-tight text-white ">
-          FITLOG
-        </div>
+         <Link href="/" className="flex items-center gap-2"><img  src="/logo.png" alt="FitLog Logo" className="h-6 w-auto"/>
+            <span className="font-[var(--font-oswald)] text-lg font-black tracking-wider text-white"> FIT<span className="text-white">LOG</span>
+            </span>
+         </Link>
 
 
         <div className="hidden items-center gap-2 md:flex">
@@ -50,13 +52,10 @@ export default function Navbar() {
             
 
             <a href="/my-plan" className={`rounded-lg px-4 py-2 text-sm font-bold transition ${pathname === "/my-plan" ? "bg-[#222630] text-[#CCFF00]" : "text-white hover:text-[#CCFF00]"}`}onClick={() => setMenuOpen(false)}>   MY PLAN </a>
-            
-
             <div className="flex items-center gap-6 pt-2">
               <a href="/my-plan" className="flex items-center gap-2 text-xs font-black text-white" onClick={() => setMenuOpen(false)}>
                 <span>Plan</span>
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#CCFF00] text-black">{plan.length}</span>
-
               </a>
 
               <a href="/my-plan" className="flex items-center gap-2 text-xs font-black text-white" onClick={() => setMenuOpen(false)}>
