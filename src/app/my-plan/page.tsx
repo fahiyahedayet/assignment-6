@@ -5,15 +5,15 @@ import { usePlan } from "../context/PlanContext";
 import { HiOutlineX } from "react-icons/hi";
 
 export default function MyPlan() {
-    const { plan, removeFromPlan } = usePlan();
+    const { plan, removeFromPlan,markAsDone  } = usePlan();
 
-    const totalMinutes = plan.reduce(
-        (total, workout) => total + workout.duration, 0
-    );
+const totalMinutes = plan.reduce(
+    (total, workout) => total + Number(workout.duration || 0), 0
+);
 
-    const totalCalories = plan.reduce(
-        (total, workout) => total + workout.calories, 0
-    );
+const totalCalories = plan.reduce(
+    (total, workout) => total + Number(workout.caloriesBurned || 0), 0
+);
 
     return (
         <>
@@ -105,8 +105,8 @@ export default function MyPlan() {
                                                     {workout.equipment}
                                                 </p>
 
-                                                <p className="mt-2 text-xs font-bold text-white/50">
-                                                    {workout.duration} MIN ·{" "} {workout.calories} CAL · ★{" "} {workout.rating}
+                                                <p className="mt-2 text-xs font-bold text-white/50">{Number(workout.duration || 0)} MIN ·{" "}
+                                                   {Number(workout.caloriesBurned || 0)} CAL · ★{" "} {workout.rating}
                                                 </p>
 
                                             </div>
@@ -118,9 +118,10 @@ export default function MyPlan() {
                                                 >View Details
                                                 </Link>
 
-                                                <button
-                                                    className="rounded-lg bg-[#CCFF00] px-4 py-2 text-xs font-black text-black transition hover:brightness-95"
-                                                >Mark as Done
+                                                
+                                                <button onClick={() => markAsDone(workout.id)}className="rounded-lg bg-[#CCFF00] px-4 py-2 text-xs font-black text-black transition hover:brightness-95">
+
+                                                 {workout.completed ? "DONE" : "Mark as Done"}
                                                 </button>
 
                                                 <button
