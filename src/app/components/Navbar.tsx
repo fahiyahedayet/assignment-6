@@ -57,11 +57,9 @@ export default function Navbar() {
                 <span>Plan</span>
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#CCFF00] text-black">{plan.length}</span>
               </a>
-
               <a href="/my-plan" className="flex items-center gap-2 text-xs font-black text-white" onClick={() => setMenuOpen(false)}>
                 <span>Saved</span>
                 <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/30 text-white">{saved.length}</span>
-
               </a>
             </div>
           </div>
