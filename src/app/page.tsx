@@ -1,4 +1,7 @@
 import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Library from "./components/Library";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -6,7 +9,10 @@ export default function Home() {
       <Navbar />
 
       <main>
-        <h1>FitLog</h1>
+        <Hero />
+        <Library />
+        <Footer />
+           
       </main>
     </>
   );

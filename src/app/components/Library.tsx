@@ -10,7 +10,7 @@ type Workout = {
     muscleGroups: string[];
     equipment: string;
     duration: number;
-    calories: number;
+    caloriesBurned: number;
     rating: number;
 };
 
@@ -19,14 +19,12 @@ export default function Library() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("https://api.abcz.workers.dev/api/fitlog")
+        fetch("https://api.api-store.workers.dev/api/fitlog")
             .then((response) => response.json())
-            .then((data) => {
-                setWorkouts(data);
+            .then((data) => { setWorkouts(data);
                 setLoading(false);
             })
-            .catch((error) => {
-                console.error("Failed to fetch workouts:", error);
+            .catch((error) => {console.error("Failed to fetch workouts:", error);
                 setLoading(false);
             });
     }, []);
@@ -34,31 +32,18 @@ export default function Library() {
     return (
         <section id="library" className="bg-black px-6 py-16">
             <div className="mx-auto max-w-7xl">
-
-                {/* Library Heading */}
                 <div className="mb-10">
-                    <p className="mb-3 text-xs font-bold tracking-[0.25em] text-[#CCFF00]">
-                        WORKOUTS
-                    </p>
 
-                    <h2 className="text-4xl font-black uppercase text-white md:text-5xl">
-                        THE LIBRARY
+                    <h2 className="text-4xl font-black uppercase text-white md:text-5xl">THE LIBRARY
                     </h2>
 
-                    <p className="mt-3 max-w-2xl text-sm leading-6 text-white/60 md:text-base">
-                        Explore workouts built to help you train with purpose and track
-                        every set.
+                    <p className="mt-3 max-w-2xl text-sm leading-6 text-white/60 md:text-base">Twelve lifts covering every major muscle group.
                     </p>
                 </div>
-
-                {/* Loading */}
                 {loading && (
-                    <p className="text-white/60">
-                        Loading workouts...
+                    <p className="text-white/60"> Loading workouts...
                     </p>
                 )}
-
-                {/* Workout Cards */}
                 {!loading && (
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                         {workouts.map((workout) => (
