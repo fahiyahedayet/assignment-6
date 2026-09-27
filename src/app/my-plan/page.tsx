@@ -42,11 +42,10 @@ export default function MyPlan() {
         return b.rating - a.rating;
     });
 
-    // Determine which list is currently active
-    const currentList = activeTab === "plan" ? plan : saved;
+    const currentList = activeTab ==="plan" ? plan : saved;
 
     const totalMinutes = currentList.reduce(
-        (total, workout) => total + Number(workout.duration || 0), 0
+        (total, workout) => total + Number(workout.duration || 0),0
     );
 
     const totalCalories = currentList.reduce(
@@ -86,26 +85,19 @@ export default function MyPlan() {
                     </div>
                     <div className="mt-10 flex flex-col gap-4 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
                         <div className="flex items-center gap-3">
-                            <button
-                                onClick={() => setActiveTab("plan")}
-                                className={`rounded-full px-5 py-2.5 text-sm font-bold transition ${activeTab === "plan" ? "bg-[#222630] text-[#CCFF00]" : "text-white/50 hover:text-white"}`} >
+                            <button onClick={() => setActiveTab("plan")} className={`rounded-full px-5 py-2.5 text-sm font-bold transition ${activeTab === "plan" ? "bg-[#222630] text-[#CCFF00]" : "text-white/50 hover:text-white"}`} >
                                 Today's Plan ({plan.length})
                             </button>
 
-                            <button
-                                onClick={() => setActiveTab("saved")}
-                                className={`rounded-full px-5 py-2.5 text-sm font-bold transition ${activeTab === "saved"? "bg-[#222630] text-[#CCFF00]" : "text-white/50 hover:text-white"}`}
+                            <button onClick={() => setActiveTab("saved")} className={`rounded-full px-5 py-2.5 text-sm font-bold transition ${activeTab === "saved"? "bg-[#222630] text-[#CCFF00]" : "text-white/50 hover:text-white"}`}
                             > Saved ({saved.length})
                             </button>
                         </div>
 
                         <div className="relative">
-                            <select
-                                value={sortBy}
-                                onChange={(e) =>
-                                    setSortBy(e.target.value as "duration" | "calories" | "rating")
-                                }
-                                className="appearance-none rounded-xl border border-white/10 bg-[#222630] py-2.5 pl-4 pr-10 text-sm font-bold text-white outline-none transition hover:border-white/20"
+                            <select  value={sortBy}
+                                onChange={(e) => setSortBy (e.target.value as "duration" | "calories" | "rating")
+                                } className="appearance-none rounded-xl border border-white/10 bg-[#222630] py-2.5 pl-4 pr-10 text-sm font-bold text-white outline-none transition hover:border-white/20"
                             >
                                 <option value="duration">Sort by Duration</option>
                                 <option value="calories">Sort by Calories</option>
@@ -117,7 +109,6 @@ export default function MyPlan() {
                                 </svg>
                             </div>
                         </div>
-
                     </div>
                     <div className="mt-6">
 
@@ -145,18 +136,13 @@ export default function MyPlan() {
                                                         {workout.rating}
                                                     </p>
                                                 </div>
-
                                                 <div className="flex flex-wrap items-center gap-2">
                                                     <Link href={`/workout/${workout.id}`} className="rounded-lg border border-white/15 px-4 py-2 text-xs font-bold text-white transition hover:bg-white/5">
                                                         View Details
                                                     </Link>
-
                                                     <button onClick={() => markAsDone(workout.id)} className="rounded-lg bg-[#CCFF00] px-4 py-2 text-xs font-black text-black transition hover:brightness-95">
-                                                        {workout.completed
-                                                            ? "DONE"
-                                                            : "Mark as Done"}
+                                                        {workout.completed ? "DONE": "Mark as Done"}
                                                     </button>
-
                                                     <button onClick={() => { removeFromPlan(workout.id); toast.success("Workout removed from plan"); }} className="rounded-lg p-2 text-white/50 transition hover:bg-white/10 hover:text-white" aria-label={`Remove ${workout.name}`}>
                                                         <HiOutlineX size={20} />
                                                     </button>
