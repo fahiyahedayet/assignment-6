@@ -8,6 +8,7 @@ import { useState } from "react";
 import Footer from "../components/Footer";
 import { toast } from "react-toastify";
 import { MdCheckCircleOutline } from "react-icons/md";
+import { HiChevronDown } from "react-icons/hi";
 
 
 export default function MyPlan() {
@@ -99,17 +100,14 @@ export default function MyPlan() {
                         <div className="relative">
                             <select  value={sortBy}
                                 onChange={(e) => setSortBy (e.target.value as "duration" | "calories" | "rating")
-                                } className="appearance-none rounded-xl border border-white/10 bg-[#222630] py-2.5 pl-4 pr-10 text-sm font-bold text-white outline-none transition hover:border-white/20"
-                            >
+                                } className="appearance-none rounded-lg border border-white/10 bg-[#222630] py-2.5 pl-4 pr-10 text-sm font-bold text-white outline-none">
                                 <option value="duration">Sort by Duration</option>
                                 <option value="calories">Sort by Calories</option>
                                 <option value="rating">Sort by Rating</option>
+                                 
                             </select>
-                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-white/50">
-                                <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
-                                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd" />
-                                </svg>
-                            </div>
+                            <HiChevronDown size={18}className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white/60" />
+                            
                         </div>
                     </div>
                     <div className="mt-6">
