@@ -4,7 +4,7 @@ FitLog is a responsive workout library and training tracker built with Next.js. 
 
 ## Live Project
 
-🔗 **Live Demo:** 
+🔗 **Live Demo:** https://assignment-6-one-pi.vercel.app/
 
 ---
 
@@ -86,6 +86,15 @@ Toast notifications provide feedback when users:
 - Save a workout
 - Try to add a duplicate workout
 - Try to exceed the plan limit
+- Remove a workout plan
+
+### 🚫 Custom 404 Page
+
+A custom 404 page is included for unknown or invalid routes.
+
+### ⏳ Loading State
+
+A loading animation is displayed while workout data is being fetched from the API.
 
 ---
 
