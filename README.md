@@ -1,4 +1,4 @@
-# FitLog — Workout Library & Training Log
+# 🏋️ FitLog — Workout Library & Training Log
 
 FitLog is a responsive workout library and training tracker built with Next.js. It allows users to explore workouts, view detailed exercise information, create a daily workout plan, save workouts for later, and track basic training statistics.
 
