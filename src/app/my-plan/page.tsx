@@ -7,6 +7,8 @@ import { HiOutlineX } from "react-icons/hi";
 import { useState } from "react";
 import Footer from "../components/Footer";
 import { toast } from "react-toastify";
+import { MdCheckCircleOutline } from "react-icons/md";
+
 
 export default function MyPlan() {
     const {
@@ -61,7 +63,7 @@ export default function MyPlan() {
                     <div>
                         <p className="text-xs font-bold tracking-[0.25em] text-[#CCFF00]">YOUR TRAINING</p>
                         <h1 className="mt-2 text-4xl font-black uppercase md:text-5xl">MY PLAN </h1>
-                        <p className="mt-3 text-sm text-white/60 md:text-base"> Build today's workout and keep your training focused.
+                        <p className="mt-3 text-sm text-white/60 md:text-base"> Cap of five lifts for today. Finish them, then load more.
                         </p>
                     </div>
 
@@ -85,11 +87,11 @@ export default function MyPlan() {
                     </div>
                     <div className="mt-10 flex flex-col gap-4 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
                         <div className="flex items-center gap-3">
-                            <button onClick={() => setActiveTab("plan")} className={`rounded-full px-5 py-2.5 text-sm font-bold transition ${activeTab === "plan" ? "bg-[#222630] text-[#CCFF00]" : "text-white/50 hover:text-white"}`} >
+                            <button onClick={() => setActiveTab("plan")} className={`rounded-full px-5 cursor-pointer py-2.5 text-sm font-bold transition ${activeTab === "plan" ? "bg-[#222630] text-[#CCFF00]" : "text-white/50 hover:text-white"}`} >
                                 Today's Plan ({plan.length})
                             </button>
 
-                            <button onClick={() => setActiveTab("saved")} className={`rounded-full px-5 py-2.5 text-sm font-bold transition ${activeTab === "saved"? "bg-[#222630] text-[#CCFF00]" : "text-white/50 hover:text-white"}`}
+                            <button onClick={() => setActiveTab("saved")} className={`rounded-full px-5 cursor-pointer py-2.5 text-sm font-bold transition ${activeTab === "saved"? "bg-[#222630] text-[#CCFF00]" : "text-white/50 hover:text-white"}`}
                             > Saved ({saved.length})
                             </button>
                         </div>
@@ -115,10 +117,10 @@ export default function MyPlan() {
                         {activeTab === "plan" ? (
                             plan.length === 0 ? (
                                 <div className="rounded-2xl border border-white/10 bg-[#171920] px-6 py-16 text-center">
-                                    <h2 className="text-2xl font-black uppercase">Your plan is empty</h2>
-                                    <p className="mt-3 text-sm text-white/50"> Add a workout from the library to start today's plan.</p>
-                                    <Link href="/" className="mt-6 inline-flex rounded-full bg-[#CCFF00] px-6 py-3 text-sm font-black text-black">
-                                        BROWSE WORKOUTS 
+                                    <h2 className="text-2xl font-black uppercase">NOTHING HERE YET</h2>
+                                    <p className="mt-3 text-sm text-white/50"> Browse the library and add a lift to get today moving.</p>
+                                    <Link href="/" className="mt-6 inline-flex rounded-full bg-[#CCFF00] px-6 py-3 text-sm font-black text-black transition hover:brightness-95">
+                                        Go to workouts
                                     </Link>
                                 </div>
                             ) : (
@@ -140,10 +142,11 @@ export default function MyPlan() {
                                                     <Link href={`/workout/${workout.id}`} className="rounded-lg border border-white/15 px-4 py-2 text-xs font-bold text-white transition hover:bg-white/5">
                                                         View Details
                                                     </Link>
-                                                    <button onClick={() => markAsDone(workout.id)} className="rounded-lg bg-[#CCFF00] px-4 py-2 text-xs font-black text-black transition hover:brightness-95">
-                                                        {workout.completed ? "DONE": "Mark as Done"}
+                                                    <button onClick={() => {markAsDone(workout.id); toast.success("Workout marked as done!");}} className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-[#CCFF00] px-4 py-2 text-xs font-black text-black transition hover:brightness-95">
+                                                      <MdCheckCircleOutline size={18} />
+                                                      {workout.completed ? "DONE" : "Mark as Done"}
                                                     </button>
-                                                    <button onClick={() => { removeFromPlan(workout.id); toast.success("Workout removed from plan"); }} className="rounded-lg p-2 text-white/50 transition hover:bg-white/10 hover:text-white" aria-label={`Remove ${workout.name}`}>
+                                                    <button onClick={() => { removeFromPlan(workout.id); toast.success("Workout removed from plan"); }} className="rounded-lg p-2 cursor-pointer text-white/50 transition hover:bg-white/10 hover:text-white" aria-label={`Remove ${workout.name}`}>
                                                         <HiOutlineX size={20} />
                                                     </button>
                                                 </div>
