@@ -40,10 +40,11 @@ export default function Library() {
                     <p className="mt-3 max-w-2xl text-sm leading-6 text-white/60 md:text-base">Twelve lifts covering every major muscle group.
                     </p>
                 </div>
-                {loading && (
-                    <p className="text-white/60"> Loading workouts...
-                    </p>
-                )}
+                 {loading && ( <div className="flex items-center gap-3 py-10 text-white/60">
+                   <span className="h-6 w-6 animate-spin rounded-full border-2 border-white/20 border-t-[#CCFF00]" />
+                  <span className="text-sm font-bold"> Loading workouts...</span>
+               </div>
+              )}
                 {!loading && (
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                         {workouts.map((workout) => (
