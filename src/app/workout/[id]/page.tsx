@@ -4,6 +4,7 @@ import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import WorkoutActions from "@/app/components/WorkoutActions";
 
 import SaveWorkoutButton from "@/app/components/SaveWorkoutButton";
+import Footer from "@/app/components/Footer";
 
 type WorkoutDetailsProps = {
     params: Promise<{
@@ -53,19 +54,16 @@ export default async function WorkoutDetails({
                             <div>
                                 <h1 className="text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-5xl">{workout.name}
                                 </h1>
-
                                 <p className="mt-4 max-w-2xl text-sm leading-6 text-white/70 sm:text-base">  {workout.description}
                                 </p>
                             </div>
 
                             <div className="mt-5 flex flex-wrap gap-2">
                                 {workout.muscleGroups.map((muscle) => (
-                                    <span key={muscle} className="rounded-full bg-[#CCFF00] px-3 py-1 text-xs font-bold text-black"
-                                    >{muscle}
+                                    <span key={muscle} className="rounded-full bg-[#CCFF00] px-3 py-1 text-xs font-bold text-black">{muscle}
                                     </span>
                                 ))}
                             </div>
-
                             <div className="mt-7 overflow-hidden rounded-2xl border border-white/10 bg-[#171920]">
 
                                 <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
@@ -150,6 +148,7 @@ export default async function WorkoutDetails({
                     </div>
 
                 </div>
+                <Footer />
             </main>
         </>
     );
